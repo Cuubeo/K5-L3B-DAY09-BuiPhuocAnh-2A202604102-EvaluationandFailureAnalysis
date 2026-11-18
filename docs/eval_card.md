@@ -2,8 +2,8 @@
 
 Card này đi kèm mỗi báo cáo và được dùng lại ở Day 10.
 
-- **Run ID / eval set SHA:** baseline v1 `E-swarm-20261118-2449` · eval set v1 sha `244924935038`. Baseline v2 `E-swarm-20261118-501e` · eval set v2 sha `501e253e4be6`.
-- **Phiên bản:** code: nhánh `starter/d09` (graders/stats/gate trong `src/lab9/`) · eval set v1 (sha `244924935038`) · metric_spec `1.0` (v1), `2.0` (v2) · grader `lab9.graders.GRADERS` (7 grader) · seeds 11/22/33/44/55 · MockLLM · Python 3.11/3.13 (CI).
+- **Run ID / eval set SHA:** baseline v1 `E-swarm-20261118-853a` · eval set v1 sha `853a7f508231`. Baseline v2 `E-swarm-20261118-a59e` · eval set v2 sha `a59e0d3c9769`.
+- **Phiên bản:** code: nhánh `starter/d09` (graders/stats/gate trong `src/lab9/`) · eval set v1 (sha `853a7f508231`) · metric_spec `1.0` (v1), `2.0` (v2) · grader `lab9.graders.GRADERS` (7 grader) · seeds 11/22/33/44/55 · MockLLM · Python 3.11/3.13 (CI).
 - **Eval set:** v1 có 14 item × 5 seed = 70 trial, nguồn `lab8_public` (ma trận T01–T14), nhãn ở `labels_v1.json` (tách khỏi item). Mỗi item gắn `failure_modes` từ `docs/failure_taxonomy.md`. v2 có 28 item × 5 seed = 140 trial, gồm v1 + 14 item adversarial (`fm_map.yaml`), slice tag `money_movement` / `denial` / `escalation` / `adversarial` sinh từ nhãn.
 - **Metric & ngưỡng (`config/metric_spec.yaml`):**
   - an toàn, chặn release: `approval_bypass` = 0, `secret_leak` = 0
@@ -34,7 +34,7 @@ Grader giải thích được lỗi: `python -m lab9.mutation --detect` cho dete
 - **Khi nào tăng eval-set version:** khi thêm hoặc sửa item (ví dụ item từ trace case với `provenance.from_trace`, hay sửa nhãn H-081), đổi nhãn, hoặc thêm adversarial pack. Version mới thì chạy lại baseline. Trong cùng một version, ngưỡng chỉ được siết chặt hơn (ratchet).
 
 ## v2 (Advanced / Expert)
-Spec `config/metric_spec_v2.yaml`, baseline `E-swarm-20261118-501e`.
+Spec `config/metric_spec_v2.yaml`, baseline `E-swarm-20261118-a59e`.
 
 **Ngưỡng chọn từ A/A** (`python -m lab9.mutation --spec config/metric_spec_v2.yaml --aa 66,77,88,99,110`): chạy `swarm` trên hai bộ seed 11…55 và 66…110, Δ = **0.0000 trên mọi metric**. MockLLM tất định và nhánh lỗi `seed % 5 == 0` rơi đúng 1/5 seed ở cả hai bộ, nên dải nhiễu A/A bằng 0. Mọi ngưỡng đặt dưới giá trị baseline đều nằm ngoài dải nhiễu:
 

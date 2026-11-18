@@ -15,7 +15,7 @@
 - **Môi trường đo:** MockLLM; eval set v1 gồm 14 item × 5 seed (11/22/33/44/55); v2 có 28 item (v1 + 14 item adversarial). **Chưa** đo trên người dùng thật.
 
 ## 3. Định nghĩa "chạy đúng"
-Baseline là `E-swarm-20261118-2449` (eval set v1 sha `244924935038`, `src/reports/baseline_v1.json`).
+Baseline là `E-swarm-20261118-853a` (eval set v1 sha `853a7f508231`, `src/reports/baseline_v1.json`).
 
 | Metric | Loại | Ngưỡng | Chặn release? | Baseline |
 |---|---|---|---|---|
